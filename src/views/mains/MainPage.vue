@@ -34,6 +34,7 @@ import type { CSSProperties } from 'vue'
 import { ref } from 'vue'
 import drawer from '@/components/Right-drawer/drawer-page.vue'
 import { useRouter } from 'vue-router'
+import SiderLogo from '@/components/Left-side/SiderLogo.vue'
 
 const router = useRouter()
 const contentStyle: CSSProperties = {
