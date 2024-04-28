@@ -8,7 +8,7 @@
 <template>
   <div class="logo-div">
     <img
-      src="../../assets/image/logo-font.png"
+      src="../../../../assets/image/logo-font.png"
       alt="成都东软学院logo图片"
       class="logo"
     />

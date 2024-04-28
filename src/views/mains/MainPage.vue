@@ -24,7 +24,7 @@
     </a-layout>
     <a-layout-sider :style="siderStyle">
       <a-button type="primary" @click="showDrawer">Open</a-button>
-      <drawer v-model:open="isOpen"></drawer>
+      <DrawerPage v-model:open="isOpen"></DrawerPage>
     </a-layout-sider>
   </a-layout>
 </template>
@@ -32,9 +32,10 @@
 <script setup lang="ts">
 import type { CSSProperties } from 'vue'
 import { ref } from 'vue'
-import drawer from '@/components/Right-drawer/drawer-page.vue'
 import { useRouter } from 'vue-router'
-import SiderLogo from '@/components/Left-side/SiderLogo.vue'
+
+import DrawerPage from '@/views/mains/child-compontents/Right-drawer/DrawerPage.vue'
+import SiderLogo from '@/views/mains/child-compontents/Left-side/SiderLogo.vue'
 
 const router = useRouter()
 const contentStyle: CSSProperties = {
