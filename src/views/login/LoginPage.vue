@@ -58,6 +58,8 @@ const logIn = () => {
 }
 </script>
 
+<style scoped></style>
+
 <style scoped>
 .big-box {
   font-size: 16px;
