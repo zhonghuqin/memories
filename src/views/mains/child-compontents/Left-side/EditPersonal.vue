@@ -152,5 +152,5 @@ const sendDataToBackend = async (
 }
 </script>
 <style scoped>
-@import url('@/assets/css/mains/child-compontents/Left-side/personallnfor.css');
+@import url('@/assets/css/mains/child-components/Left-side/personallnfor.css');
 </style>
