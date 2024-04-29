@@ -7,17 +7,14 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    AButton: (typeof import('ant-design-vue/es'))['Button']
-    ACard: (typeof import('ant-design-vue/es'))['Card']
-    ADrawer: (typeof import('ant-design-vue/es'))['Drawer']
-    ALayout: (typeof import('ant-design-vue/es'))['Layout']
-    ALayoutContent: (typeof import('ant-design-vue/es'))['LayoutContent']
-    ALayoutFooter: (typeof import('ant-design-vue/es'))['LayoutFooter']
-    ALayoutSider: (typeof import('ant-design-vue/es'))['LayoutSider']
-    Drawer: (typeof import('./src/views/mains/child-compontents/Right-drawer/Drawer.vue'))['default']
-    DrawerPage: (typeof import('./src/views/mains/child-compontents/Right-drawer/DrawerPage.vue'))['default']
-    RouterLink: (typeof import('vue-router'))['RouterLink']
-    RouterView: (typeof import('vue-router'))['RouterView']
-    SiderLogo: (typeof import('./src/views/mains/child-compontents/Left-side/SiderLogo.vue'))['default']
+    AButton: typeof import('ant-design-vue/es')['Button']
+    AInput: typeof import('ant-design-vue/es')['Input']
+    ALayout: typeof import('ant-design-vue/es')['Layout']
+    ALayoutContent: typeof import('ant-design-vue/es')['LayoutContent']
+    ALayoutFooter: typeof import('ant-design-vue/es')['LayoutFooter']
+    ALayoutSider: typeof import('ant-design-vue/es')['LayoutSider']
+    AModal: typeof import('ant-design-vue/es')['Modal']
+    RouterLink: typeof import('vue-router')['RouterLink']
+    RouterView: typeof import('vue-router')['RouterView']
   }
 }
