@@ -5,10 +5,11 @@
   "compilerOptions": {
     "composite": true,
     "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
-    "target": "es2020",
     "baseUrl": ".",
+    "moduleResolution": "node" ,// 或 "nodenext"
     "paths": {
       "@/*": ["./src/*"]
     }
   }
+
 }
