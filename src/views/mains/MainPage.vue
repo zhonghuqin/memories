@@ -8,7 +8,7 @@
 <template>
   <a-layout class="main">
     <a-layout-sider :style="siderStyle">
-      <SiderLogo />
+      <personallnformation></personallnformation>
       <a-button
         type="primary"
         danger
@@ -22,10 +22,17 @@
       <a-layout-content :style="contentStyle"></a-layout-content>
       <a-layout-footer :style="footerStyle"></a-layout-footer>
     </a-layout>
-    <a-layout-sider :style="siderStyle">
-      <a-button type="primary" @click="showDrawer">Open</a-button>
-      <DrawerPage v-model:open="isOpen"></DrawerPage>
-    </a-layout-sider>
+
+    <!-- <a-layout-sider :style="siderStyle"> -->
+    <!-- <a-button type="primary" @click="showDrawer">Open</a-button> -->
+    <a-float-button @click="openStore.controlOpen()" style="top: 50%">
+      <template #icon>
+        <LeftCircleTwoTone two-tone-color="#FFC364" />
+      </template>
+    </a-float-button>
+    <DrawerPage v-model:open="openStore.isOpen"></DrawerPage>
+    <!-- </a-layout-sider> -->
+
   </a-layout>
 </template>
 
@@ -34,9 +41,14 @@ import type { CSSProperties } from 'vue'
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 
+import { LeftCircleTwoTone } from '@ant-design/icons-vue'
+
+import personallnformation from '@/views/mains/child-compontents/Left-side/PersonalInformation.vue'
+
 import DrawerPage from '@/views/mains/child-compontents/Right-drawer/DrawerPage.vue'
 import SiderLogo from '@/views/mains/child-compontents/Left-side/SiderLogo.vue'
-
+import { useOpenStore } from '@/stores/index'
+const openStore = useOpenStore()
 const router = useRouter()
 const contentStyle: CSSProperties = {
   textAlign: 'left',
@@ -52,17 +64,25 @@ const siderStyle: CSSProperties = {
   color: '#fff',
   boxShadow:
     'rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset',
-  backgroundColor: '#F5F5F5'
+  background: 'rgba(255, 195, 100, 1)'
 }
-
+const rightStyle: CSSProperties = {
+  position: 'relative',
+  textAlign: 'center',
+  lineHeight: '120px',
+  color: '#fff',
+  boxShadow:
+    'rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset',
+  background: '#eee'
+}
 const footerStyle: CSSProperties = {
   textAlign: 'center',
   color: '#fff',
   backgroundColor: '#F5F5F5'
 }
 //右侧抽屉
-const isOpen = ref(false)
-const showDrawer = () => (isOpen.value = true)
+// const isOpen = ref(false)
+// const showDrawer = () => openStore.controlOpen
 const logout = () => {
   router.push('/LoginPage')
 }
@@ -79,5 +99,7 @@ const logout = () => {
   left: 5px;
   right: 5px;
   margin: 0 auto;
+  background: rgba(255, 195, 100, 1);
+  color: black;
 }
 </style>

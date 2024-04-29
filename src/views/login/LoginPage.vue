@@ -45,18 +45,30 @@
 import { useRouter } from 'vue-router'
 import { ref } from 'vue'
 import { message } from 'ant-design-vue'
+import { LSJLoginRequest } from '@/service/pages/login'
 
 const router = useRouter()
 
 const useraccount = ref<string>('')
 const password = ref<string>('')
 
-const logIn = () => {
-  console.log(useraccount.value)
-  console.log(password.value)
-  router.push('/MainPage')
+async function logIn() {
+  // console.log(useraccount.value)
+  // console.log(password.value)
+  const loginResult = await LSJLoginRequest(useraccount.value, password.value)
+  // console.log(loginResult);
+  if (loginResult.code == 200) {
+    console.log(loginResult.data)
+    localStorage.setItem('LOGIN_TOKEN', loginResult.data.token)
+    router.push('/MainPage')
+    message.success('登录成功')
+  } else {
+    message.warning(`${loginResult.msg}`)
+  }
 }
 </script>
+
+<style scoped></style>
 
 <style scoped>
 .big-box {

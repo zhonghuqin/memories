@@ -1,0 +1,16 @@
+.form {
+  font-size: 50px;
+}
+.Editbtn {
+  color: rgb(232 154 63);
+  background-color: rgb(252, 232, 225, 1);
+}
+.Editbtn:hover {
+  color: white;
+  background-color: orange;
+}
+.drawer-footer {
+  text-align: center; /* 或其他适合的对齐方式 */
+  padding: 16px 24px; /* 调整内边距以匹配设计需求 */
+  border-top: 1px solid #e8e8e8; /* 添加分割线以区分表单和按钮 */
+}
