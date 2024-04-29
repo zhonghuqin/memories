@@ -1,3 +1,10 @@
+<template>
+  <div></div>
+</template>
+
+<script setup lang="ts"></script>
+
+
 <!--
     * @FileDescription: 页面的右侧栏。
     * @Author: 李雪茹
@@ -75,4 +82,5 @@ const afterOpenChange = (bool: boolean) => {
   console.log('open', bool)
 }
 </script>
+
 <style scoped></style>
