@@ -12,4 +12,4 @@ const logIn = () => {
   router.push('/MainPage')
 }
 </script>
-<style></style>
+<style scoped></style>
