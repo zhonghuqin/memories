@@ -65,9 +65,9 @@
     cancel-text="取消"
     style="text-align: center"
   >
-    <p contenteditable @input="updateText" style="font-size: 30px">
+    <a-textarea contenteditable @input="updateText" style="font-size: 30px">
       {{ editEssay }}
-    </p>
+    </a-textarea>
   </a-modal>
   <a-modal
     v-model:open="open"
@@ -81,7 +81,7 @@
   </a-modal>
 </template>
 <script setup lang="ts">
-import { ref, defineEmits, onMounted } from 'vue'
+import { ref, onMounted } from 'vue'
 import {
   LXRselectissue,
   LXRselectwelcome,

@@ -7,7 +7,7 @@
 -->
 <template>
   <a-layout class="main">
-    <a-layout-sider :style="siderStyle">
+    <a-layout-sider :style="siderStyle" width="330">
       <personallnformation></personallnformation>
       <a-button
         type="primary"
@@ -72,8 +72,6 @@ const siderStyle: CSSProperties = {
   textAlign: 'center',
   lineHeight: '120px',
   color: '#fff',
-  boxShadow:
-    'rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset',
   background: 'rgba(255, 195, 100, 1)'
 }
 const footerStyle: CSSProperties = {
@@ -106,6 +104,8 @@ const handleInputValueChanged = (value: string) => {
   margin: 0 auto;
   background: rgba(255, 195, 100, 1);
   color: black;
+  font-size: 20px;
+  height: 50px;
 }
 :deep.ant-float-btn .ant-float-btn-body {
   width: 100%;
