@@ -214,6 +214,9 @@ onMounted(async () => {
 :global(.ant-modal .ant-modal-title) {
   font-size: 30px !important;
 }
+:global(.ant-modal .ant-modal-close-x) {
+  font-size: 30px !important;
+}
 .card {
   width: 300px;
 }
@@ -224,7 +227,11 @@ onMounted(async () => {
   align-items: center;
 }
 .btn {
+  width: 100%;
   position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   bottom: 20px;
 }
 .full-modal {
