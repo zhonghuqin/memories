@@ -54,9 +54,9 @@ amendMessage()
 .personal-information {
   color: white;
   text-align: left;
+  margin:auto 58px;
   padding-bottom: 20px;
   line-height: 44px;
-  margin-left: 68px;
 }
 .card-container {
   margin: 0px 10px;
