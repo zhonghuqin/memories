@@ -6,47 +6,36 @@
     * @LastEditTime: 2024年4月30日
 -->
 <template>
-  <!-- <a-config-provider
-    :theme="{
-      token: {
-        fontSize: '30px'
-      }
-    }"
-  > -->
   <a-drawer
     width="100%"
     v-model:open="open"
-    :root-style="{ color: 'blue', fontSize: '30px' }"
-    :footer-style="{ fontSize: '30px' }"
-    :header-style="{ textAlign: 'center' }"
-    :style="{ color: 'black' }"
+    class="custom-class"
+    root-class-name="root-class-name"
+    :root-style="{ color: 'blue' }"
+    style="color: black"
     title="关系图"
     placement="right"
     @after-open-change="afterOpenChange"
   >
-    <div class="cards">
-      <div v-for="item in issues" :key="item.id">
-        <CardComponent
-          @closeDrawer="openStore.controlOpen()"
-          :backgroundColor="item.state === 0 ? color1 : color2"
-          :issueId="item.id.toString()"
-          style="min-height: 350px"
-          >{{ item.issue }}</CardComponent
-        >
-        <!-- <CardComponent
-                @closeDrawer="openStore.controlOpen()"
-                :backgroundColor="color2"
-                >我的父亲</CardComponent
-              > -->
-      </div>
+    <div style="display: inline-block" v-for="item in issues" :key="item.id">
+      <CardComponent
+        @closeDrawer="openStore.controlOpen()"
+        :backgroundColor="item.state === 0 ? color1 : color2"
+        :issueId="item.id.toString()"
+        >{{ item.issue }}</CardComponent
+      >
+      <!-- <CardComponent
+        @closeDrawer="openStore.controlOpen()"
+        :backgroundColor="color2"
+        >我的父亲</CardComponent
+      > -->
     </div>
 
     <template #footer> 特别说明：绿色卡牌是您已编辑过的或您已完成的 </template>
   </a-drawer>
-  <!-- </a-config-provider> -->
 </template>
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, reactive } from 'vue'
 import CardComponent from './card-component.vue'
 import { useOpenStore } from '@/stores/index'
 import {
@@ -115,22 +104,4 @@ onMounted(async () => {
 :global(.ant-drawer .ant-drawer-close) {
   font-size: 30px;
 }
-/* // .ant-drawer .ant-drawer-title {
-//   font-size: 30px !important;
-// }
-// #root .ant-drawer .ant-drawer-title {
-//   font-size: 30px !important;
-// }
-// :global(.divTitle .ant-drawer .ant-drawer-title) {
-//   font-size: 30px !important;
-// } */
-
-/* :deep .ant-drawer-title {
-  flex: 1;
-  margin: 0;
-  color: rgba(0, 0, 0, 0.88);
-  font-weight: 600;
-  font-size: 30px !important;
-  line-height: 1.5;
-} */
 </style>
