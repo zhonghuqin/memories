@@ -29,9 +29,15 @@
 
     <!-- <a-layout-sider :style="siderStyle"> -->
     <!-- <a-button type="primary" @click="showDrawer">Open</a-button> -->
-    <a-float-button @click="openStore.controlOpen()" style="top: 50%">
+    <a-float-button
+      @click="openStore.controlOpen()"
+      style="top: 50%; font-size: 24px; width: 100px; height: 100px"
+    >
       <template #icon>
-        <LeftCircleTwoTone two-tone-color="#FFC364" />
+        <LeftCircleTwoTone
+          two-tone-color="#FFC364"
+          :style="{ fontSize: '50px' }"
+        />
       </template>
     </a-float-button>
     <DrawerPage v-model:open="openStore.isOpen"></DrawerPage>
@@ -100,6 +106,35 @@ const handleInputValueChanged = (value: string) => {
   margin: 0 auto;
   background: rgba(255, 195, 100, 1);
   color: black;
+}
+:deep.ant-float-btn .ant-float-btn-body {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  /* transition: all 0.2s; */
+}
+:deep .ant-float-btn .ant-float-btn-body .ant-float-btn-content {
+  overflow: hidden;
+  text-align: center;
+  min-height: 40px;
+  width: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* padding: 2px 4px; */
+}
+:deep.ant-float-btn
+  .ant-float-btn-body
+  .ant-float-btn-content
+  .ant-float-btn-icon {
+  text-align: center;
+  margin: auto;
+  width: 42px;
+  font-size: 18px;
+  line-height: 1;
 }
 .footer {
   overflow: hidden;
