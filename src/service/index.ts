@@ -23,7 +23,7 @@ const lsjRequest = new LSJRequest({
       const token = localStorage.getItem('LOGIN_TOKEN')
       if (config.headers && token) {
         // 类型缩小
-        config.headers.token = token
+        config.headers.Authorization = token
       }
       return config
     }
