@@ -112,7 +112,7 @@ const rules: Record<string, Rule[]> = {
       trigger: 'change'
     }
   ],
-  defaultArea: [
+  address: [
     {
       required: true,
       message: '请填写您的地址',
