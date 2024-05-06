@@ -40,7 +40,10 @@
         />
       </template>
     </a-float-button>
-    <DrawerPage v-model:open="openStore.isOpen"></DrawerPage>
+    <a-style-provider hash-priority="high">
+      <DrawerPage v-model:open="openStore.isOpen"></DrawerPage>
+    </a-style-provider>
+
     <!-- </a-layout-sider> -->
   </a-layout>
 </template>
