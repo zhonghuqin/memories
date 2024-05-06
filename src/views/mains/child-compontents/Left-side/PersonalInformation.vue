@@ -1,23 +1,24 @@
 <template>
-    <a-card hoverable class="card-container">
-      <img
-        class="avatar"
-        :width="160"
-        :height="160"
-        alt="一个头像"
-        src="../../../../assets/image/head-photo.jpg"
-      />
-      <a-typography-title :level="5" style="color: white;font-size: 30px">{{
-          name
-        }}</a-typography-title>
-      <div class="personal-information">
-        <p class="ant-input">{{ sex }}</p>
-        <p class="ant-input">{{ age }}岁</p>
-        <p class="ant-input">{{ address }}</p>
-      </div>
-      <EditPersonal key="button" @data-updated="handleDataUpdated"/>
-    </a-card>
-
+  <a-card hoverable class="card-container">
+    <template #actions>
+      <EditPersonal key="button" @data-updated="handleDataUpdated" />
+    </template>
+    <img
+      class="avatar"
+      :width="120"
+      :height="120"
+      alt="一个头像"
+      src="../../../../assets/image/head-photo.jpg"
+    />
+    <a-typography-title :level="5" style="color: white">{{
+      name
+    }}</a-typography-title>
+    <div class="personal-information">
+      <p>性别：{{ sex }}</p>
+      <p>年龄：{{ age }}</p>
+      <p>住址：{{ address }}</p>
+    </div>
+  </a-card>
 </template>
 
 <script setup lang="ts">
@@ -54,19 +55,12 @@ amendMessage()
 .personal-information {
   color: white;
   text-align: left;
-  padding-bottom: 20px;
-  line-height: 44px;
-  margin-left: 68px;
 }
 .card-container {
-  margin: 0px 10px;
+  margin: 5vh 10px;
   background-color: rgba(255, 195, 100, 1);
-  border: none;
 }
 .avatar {
   border-radius: 50%;
-}
-.ant-input {
-  font-size: 30px;
 }
 </style>

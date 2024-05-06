@@ -2,76 +2,64 @@
   <a-button type="primary" class="Editbtn" @click="showDrawer"
     >修改个人信息</a-button
   >
-<!--  <a-config-provider-->
-<!--    :theme="{-->
-<!--      token: {-->
-<!--        fontSize: '30px',-->
-<!--      },-->
-<!--    }"-->
-<!--  >-->
-<!--  <a-style-provider hash-priority="high">-->
-    <a-drawer
-      title="修改个人信息"
-      :width="720"
-      :open="open"
-      :body-style="{ paddingBottom: '80px' }"
-      :header-style="{textAlign: 'center'}"
-      :footer-style="{ textAlign: 'right' }"
-      @close="onClose"
+  <a-drawer
+    title="请填写个人信息"
+    :width="720"
+    :open="open"
+    :body-style="{ paddingBottom: '80px' }"
+    :footer-style="{ textAlign: 'right' }"
+    @close="onClose"
+  >
+    <a-form
+      ref="formRef"
+      :model="form"
+      :rules="rules"
+      layout="vertical"
+      class="form"
+      size="large"
     >
-      <a-form
-        ref="formRef"
-        :model="form"
-        :rules="rules"
-        class="form"
-        size="large"
-        hideRequiredMark
-      >
-        <a-row :gutter="16">
-          <a-col :span="18">
-            <a-form-item label="姓名" name="name">
-              <a-input v-model:value="form.name" style="border: none" placeholder="请输入名字" />
-            </a-form-item>
-          </a-col>
-        </a-row>
-        <a-row :gutter="16">
-          <a-col :span="18">
-            <a-form-item label="年龄" name="age">
-              <a-input v-model:value="form.age" style="border: none" placeholder="请输入年龄" />
-            </a-form-item>
-          </a-col>
-        </a-row>
-        <a-row :gutter="16">
-          <a-col :span="18">
-            <a-form-item label="性别" name="sex">
-              <a-select
-                v-model:value="form.sex"
-                :options="options"
-                placeholder="请选择性别"
-              >
-              </a-select>
-            </a-form-item>
-          </a-col>
-        </a-row>
-        <a-row :gutter="16">
-          <a-col :span="18">
-            <a-form-item label="地址" name="address">
-              <a-input v-model:value="form.address" style="border: none" placeholder="请输入地址例如：四川.成都" />
-            </a-form-item>
-          </a-col>
-        </a-row>
-      </a-form>
-      <div class="drawer-footer">
-        <a-space class="btn-box">
-          <a-button type="primary" @click="sendDataToBackend()" style="width: 140px;height: 58px;font-size: 30px">保存</a-button>
-          <a-button @click="onClose" style="width: 140px;height: 58px;font-size: 30px">取消</a-button>
-        </a-space>
-      </div>
-    </a-drawer>
-<!--  </a-style-provider>-->
-
-<!--  </a-config-provider>-->
-
+      <a-row :gutter="16">
+        <a-col :span="18">
+          <a-form-item label="姓名" name="name">
+            <a-input v-model:value="form.name" placeholder="请输入名字" />
+          </a-form-item>
+        </a-col>
+      </a-row>
+      <a-row :gutter="16">
+        <a-col :span="18">
+          <a-form-item label="年龄" name="age">
+            <a-input v-model:value="form.age" placeholder="请输入年龄" />
+          </a-form-item>
+        </a-col>
+      </a-row>
+      <a-row :gutter="16">
+        <a-col :span="18">
+          <a-form-item label="性别" name="sex">
+            <a-select
+              v-model:value="form.sex"
+              :options="options"
+              placeholder="请选择性别"
+            >
+            </a-select>
+          </a-form-item>
+        </a-col>
+      </a-row>
+      <a-row :gutter="16">
+        <a-col :span="18">
+          <a-form-item label="地址" name="address">
+            <a-input v-model:value="form.address" placeholder="请输入地址" />
+          </a-form-item>
+        </a-col>
+      </a-row>
+    </a-form>
+    <!-- 将按钮组移至此处，即表单下方 -->
+    <div class="drawer-footer">
+      <a-space>
+        <a-button @click="onClose">取消</a-button>
+        <a-button type="primary" @click="sendDataToBackend()">保存</a-button>
+      </a-space>
+    </div>
+  </a-drawer>
 </template>
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
@@ -174,7 +162,4 @@ const sendDataToBackend = async () => {
 </script>
 <style scoped>
 @import url('@/assets/css/mains/child-components/Left-side/personallnfor.css');
-:global(.ant-drawer .ant-drawer-title) {
-  font-size: 30px;
-}
 </style>

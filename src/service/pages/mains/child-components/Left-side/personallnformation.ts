@@ -1,4 +1,4 @@
-import lsjRequest from '@/service'
+import lsjRequest from '@/service/index'
 
 //获取个人信息
 export function ZHQgetPersonal() {

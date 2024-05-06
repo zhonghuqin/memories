@@ -7,7 +7,7 @@
 -->
 <template>
   <a-layout class="main">
-    <a-layout-sider :style="siderStyle" width="330">
+    <a-layout-sider :style="siderStyle">
       <personallnformation></personallnformation>
       <a-button
         type="primary"
@@ -29,21 +29,12 @@
 
     <!-- <a-layout-sider :style="siderStyle"> -->
     <!-- <a-button type="primary" @click="showDrawer">Open</a-button> -->
-    <a-float-button
-      @click="openStore.controlOpen()"
-      style="top: 50%; font-size: 24px; width: 100px; height: 100px"
-    >
+    <a-float-button @click="openStore.controlOpen()" style="top: 50%">
       <template #icon>
-        <LeftCircleTwoTone
-          two-tone-color="#FFC364"
-          :style="{ fontSize: '50px' }"
-        />
+        <LeftCircleTwoTone two-tone-color="#FFC364" />
       </template>
     </a-float-button>
-    <a-style-provider hash-priority="high">
-      <DrawerPage v-model:open="openStore.isOpen"></DrawerPage>
-    </a-style-provider>
-
+    <DrawerPage v-model:open="openStore.isOpen"></DrawerPage>
     <!-- </a-layout-sider> -->
   </a-layout>
 </template>
@@ -75,7 +66,18 @@ const siderStyle: CSSProperties = {
   textAlign: 'center',
   lineHeight: '120px',
   color: '#fff',
+  boxShadow:
+    'rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset',
   background: 'rgba(255, 195, 100, 1)'
+}
+const rightStyle: CSSProperties = {
+  position: 'relative',
+  textAlign: 'center',
+  lineHeight: '120px',
+  color: '#fff',
+  boxShadow:
+    'rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset',
+  background: '#eee'
 }
 const footerStyle: CSSProperties = {
   textAlign: 'center',
@@ -83,6 +85,9 @@ const footerStyle: CSSProperties = {
   backgroundColor: '#ededed',
   height: '200px'
 }
+//右侧抽屉
+// const isOpen = ref(false)
+// const showDrawer = () => openStore.controlOpen
 const logout = () => {
   router.push('/LoginPage')
 }
@@ -107,37 +112,6 @@ const handleInputValueChanged = (value: string) => {
   margin: 0 auto;
   background: rgba(255, 195, 100, 1);
   color: black;
-  font-size: 20px;
-  height: 50px;
-}
-:deep.ant-float-btn .ant-float-btn-body {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  /* align-items: center; */
-  /* transition: all 0.2s; */
-}
-:deep .ant-float-btn .ant-float-btn-body .ant-float-btn-content {
-  overflow: hidden;
-  text-align: center;
-  min-height: 40px;
-  width: 90px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  /* padding: 2px 4px; */
-}
-:deep.ant-float-btn
-  .ant-float-btn-body
-  .ant-float-btn-content
-  .ant-float-btn-icon {
-  text-align: center;
-  margin: auto;
-  width: 42px;
-  font-size: 18px;
-  line-height: 1;
 }
 .footer {
   overflow: hidden;

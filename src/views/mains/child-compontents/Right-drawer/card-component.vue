@@ -3,7 +3,7 @@
   <a-card
     hoverable
     class="card"
-    :style="`background-color:${backgroundColor} ;margin-right: 30px ; width: 390px ; height:362px ; margin-bottom: 30px;border: 2px solid black;`"
+    :style="`background-color:${backgroundColor} ;margin-right: 30px`"
   >
     <div class="card-content">
       <a-avatar
@@ -11,16 +11,19 @@
         style="margin-bottom: 10px"
         src="src/assets/image/avatar.png"
       />
-      <h1 @click="onClose" style="font-size: 30px; margin-bottom: 10px">
+      <h1 @click="onClose" style="font-size: 30px">
         <slot></slot>
       </h1>
-      <span style="margin-bottom: 10px">字数：{{ count }}</span>
+      <span>字数：{{ count }}</span>
       <a-typography-paragraph
         style="font-size: 20px"
-        :ellipsis="{ rows: 2, expandable: false, symbol: 'more' }"
+        :ellipsis="{ rows: 3, expandable: false, symbol: 'more' }"
         :content="essay"
       />
-      <div class="btn">
+    </div>
+
+    <template #actions>
+      <div>
         <a-button
           type="primary"
           @click="showEditModal"
@@ -32,32 +35,7 @@
           "
           >编辑</a-button
         >
-
-        <a-button
-          type="primary"
-          style="
-            border-radius: 58px;
-            background-color: rgba(255, 255, 255, 1);
-            color: rgba(69, 153, 122, 1);
-            opacity: 1;
-            border: 1px solid rgba(180, 219, 205, 1);
-            font-size: 26px;
-            width: 129px;
-            height: 58px;
-          "
-          @click="showModal"
-          >预览</a-button
-        >
       </div>
-    </div>
-
-    <!-- <template #actions>
-      <a-button
-        type="primary"
-        @click="showEditModal"
-        style="border-radius: 58px; font-size: 26px; width: 129px; height: 58px"
-        >编辑</a-button
-      >
 
       <a-button
         type="primary"
@@ -74,7 +52,7 @@
         @click="showModal"
         >预览</a-button
       >
-    </template> -->
+    </template>
   </a-card>
   <a-modal
     v-model:open="openEdit"
@@ -89,8 +67,9 @@
   >
     <a-textarea
       contenteditable
-      style="font-size: 30px; height: 100%; height: 100%"
-      v-model:value="editEssay"
+      style="font-size: 30px"
+      v-model="editEssay"
+      :value="editEssay"
     >
       {{ editEssay }}
     </a-textarea>
@@ -140,14 +119,6 @@ const updateText = async (event: { target: { textContent: string } }) => {
   // 更新可编辑文本的内容
   editEssay.value = event.target.textContent
 }
-
-// const updateText = (event: Event) => {
-//   // 确保 event.target 不为 null
-//   if (event.target instanceof HTMLParagraphElement) {
-//     // 更新可编辑文本的内容
-//     editEssay.value = (event.target as HTMLParagraphElement).textContent;
-//   }
-// }
 const handleEditOk = async (e: MouseEvent) => {
   const formdata = new FormData()
   formdata.append('question_id', props.issueId)
@@ -211,9 +182,6 @@ onMounted(async () => {
 </script>
 <style scoped>
 /* @import url(''); */
-:global(.ant-modal .ant-modal-title) {
-  font-size: 30px !important;
-}
 .card {
   width: 300px;
 }
@@ -222,10 +190,6 @@ onMounted(async () => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-.btn {
-  position: absolute;
-  bottom: 20px;
 }
 .full-modal {
   .ant-modal {
@@ -243,22 +207,8 @@ onMounted(async () => {
     flex: 1;
   }
 }
-/* :deep .ant-modal .ant-modal-title {
-  font-size: 30px;
-} */
 </style>
 <style>
-:deep .ant-modal-title {
-  margin: 0;
-  color: rgba(0, 0, 0, 0.88);
-  font-weight: 600;
-  font-size: 30px;
-  line-height: 1.5;
-  word-wrap: break-word;
-}
-:root {
-  font-size: 30px;
-}
 .all-modal {
   .ant-modal {
     max-width: 100%;
