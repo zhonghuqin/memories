@@ -55,12 +55,19 @@ amendMessage()
 .personal-information {
   color: white;
   text-align: left;
+  margin:auto 58px;
+  padding-bottom: 20px;
+  line-height: 44px;
 }
 .card-container {
-  margin: 5vh 10px;
+  margin: 0px 10px;
   background-color: rgba(255, 195, 100, 1);
+  border: none;
 }
 .avatar {
   border-radius: 50%;
+}
+.ant-input {
+  font-size: 30px;
 }
 </style>

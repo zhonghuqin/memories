@@ -182,6 +182,12 @@ onMounted(async () => {
 </script>
 <style scoped>
 /* @import url(''); */
+:global(.ant-modal .ant-modal-title) {
+  font-size: 30px !important;
+}
+:global(.ant-modal .ant-modal-close-x) {
+  font-size: 30px !important;
+}
 .card {
   width: 300px;
 }
@@ -190,6 +196,14 @@ onMounted(async () => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.btn {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  bottom: 20px;
 }
 .full-modal {
   .ant-modal {
@@ -207,8 +221,22 @@ onMounted(async () => {
     flex: 1;
   }
 }
+/* :deep .ant-modal .ant-modal-title {
+  font-size: 30px;
+} */
 </style>
 <style>
+:deep .ant-modal-title {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.88);
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 1.5;
+  word-wrap: break-word;
+}
+:root {
+  font-size: 30px;
+}
 .all-modal {
   .ant-modal {
     max-width: 100%;

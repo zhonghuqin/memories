@@ -84,4 +84,24 @@ onMounted(async () => {
   // })
 })
 </script>
-<style scoped></style>
+<style scoped>
+.cards {
+  /* overflow: scroll; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+:deep .ant-drawer-title {
+  font-size: 30px !important;
+}
+:global(.ant-btn) {
+  font-size: 30px;
+}
+:global(.ant-drawer .ant-drawer-title) {
+  font-size: 30px !important;
+}
+:global(.ant-drawer .ant-drawer-close) {
+  font-size: 30px;
+}
+</style>
