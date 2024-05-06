@@ -62,7 +62,7 @@
   transform: translateX(20px);
 }
 .music .eight {
-  height: 42x;
+  height: 42px;
   transform: translateX(40px);
 }
 .music .nine {

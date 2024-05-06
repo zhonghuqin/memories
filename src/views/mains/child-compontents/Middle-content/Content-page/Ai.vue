@@ -22,8 +22,29 @@
       </div>
     </div>
     <div class="intention" v-if="showIntentionButtons">
-      <Button class="button" style="background: #ffc364">人物</Button>
-      <Button class="button" style="background: #82b4fb">经历</Button>
+      <Button
+        style="
+          width: 100px;
+          height: 60px;
+          background: #ffc364;
+          border-radius: 8px;
+          font-size: 30px;
+          color: rgb(255, 255, 255);
+        "
+        @click="toggleOpen"
+      >{{ figure }}</Button
+      >
+      <Button
+        style="
+          width: 100px;
+          height: 60px;
+          background: #82b4fb;
+          border-radius: 8px;
+          font-size: 30px;
+          color: rgb(255, 255, 255);
+        "
+      >{{ experience }}</Button
+      >
     </div>
   </div>
 </template>
@@ -34,10 +55,28 @@ import { CaretRightOutlined } from '@ant-design/icons-vue'
 import { Button } from 'ant-design-vue'
 import Time from '../Content-page/Time.vue'
 import VoiceButton from '../Content-page/VoiceButton.vue'
+import { useOpenStore } from '@/stores/index'
+import { JWHselectmodule } from '@/service/pages/mains/child-components/Middle-content/Ai'
+const openStore = useOpenStore()
+const toggleOpen = () => {
+  openStore.controlOpen()
+}
 const props = defineProps<{
   aiMessage: string
   showIntentionButtons: boolean
 }>()
+//查询模块,将模块内容渲染到页面
+const figure = ref<string>('')
+const experience = ref<string>('')
+selectmodule()
+async function selectmodule() {
+  const module = await JWHselectmodule()
+  if (module.code == 200) {
+    figure.value = module.data[0].module
+    experience.value = module.data[1].module
+  } else {
+  }
+}
 </script>
 <style scoped>
 .intention {
@@ -47,18 +86,11 @@ const props = defineProps<{
   color: #56684f;
   padding: 5px;
 }
-.button {
-  width: 7vh;
-  height: 4vh;
-  font-size: 2vh;
-  color: rgb(255, 255, 255);
-  border-radius: 30px;
-}
 .left .ai {
   background-image: url('../../../../../assets/image/headportrait2.png');
   background-size: cover;
   background-position: center;
-  width: 1800px;
+  min-width: 100px;
   height: 50px;
   border: 1px solid #f5f5f5;
   border-radius: 50%;

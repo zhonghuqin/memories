@@ -29,7 +29,7 @@ const player = ref<HTMLAudioElement | null>(null)
 const props = defineProps({
   content: String // 声明一个名为 content 的 prop，类型为字符串
 })
-
+console.log(props.content)
 // 定义按钮数据
 const buttons = ref([
   {
@@ -64,22 +64,21 @@ const toggleButtonStyle = (button: { active: boolean; id: number }) => {
 }
 // 定义全局变量 audio
 let audio: any
-
 async function synthesizeAndPlay(buttonId: { active: boolean; id: number }) {
   const button = buttonId
   if (!props.content) {
-    alert('对话框无内容')
+    alert('Please enter some text to synthesize.')
     return
   }
 
   try {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('LOGIN_TOKEN')
     console.log(token)
-    const apiUrl = `http://47.108.144.113:8906/synthesizes?text=${encodeURIComponent(props.content)}`
+    const apiUrl = `http://47.108.144.113:7824/synthesizes?text=${encodeURIComponent(props.content)}`
     if (token) {
       const response = await fetch(apiUrl, {
         headers: {
-          token: token // 将请求头内容传递给后端
+          Authorization: token // 将请求头内容传递给后端
         }
       })
       // console.log(response.ok)
@@ -104,7 +103,6 @@ async function synthesizeAndPlay(buttonId: { active: boolean; id: number }) {
     console.error('Error fetching and playing synthesized audio:', error)
   }
 }
-
 //暂停播放
 const pauseAudio = () => {
   if (audio) {
