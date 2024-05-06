@@ -101,14 +101,19 @@ onMounted(async () => {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
 }
 :deep .ant-drawer-title {
   font-size: 30px !important;
 }
-
+:global(.ant-btn) {
+  font-size: 30px;
+}
 :global(.ant-drawer .ant-drawer-title) {
   font-size: 30px !important;
+}
+:global(.ant-drawer .ant-drawer-close) {
+  font-size: 30px;
 }
 /* // .ant-drawer .ant-drawer-title {
 //   font-size: 30px !important;
