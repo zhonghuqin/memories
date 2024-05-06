@@ -11,7 +11,7 @@ import lsjRequest from '..'
  */
 export function LSJLoginRequest(account: string, password: string) {
   return lsjRequest.post({
-    url: '/login',
+    url: '/user/login',
     headers: {
       'Content-Type': 'multipart/form-data'
     },

@@ -56,13 +56,7 @@
     <div class="drawer-footer">
       <a-space>
         <a-button @click="onClose">取消</a-button>
-        <a-button
-          type="primary"
-          @click="
-            sendDataToBackend(form.name, form.age, form.sex, form.address, id)
-          "
-          >保存</a-button
-        >
+        <a-button type="primary" @click="sendDataToBackend()">保存</a-button>
       </a-space>
     </div>
   </a-drawer>
@@ -71,17 +65,23 @@
 import { reactive, ref } from 'vue'
 import type { Rule } from 'ant-design-vue/es/form'
 import type { SelectProps } from 'ant-design-vue'
+import {
+  Editperson,
+  ZHQgetPersonal
+} from '@/service/pages/mains/child-compontents/Left-side/personallnformation'
+import { message } from 'ant-design-vue'
+const emit = defineEmits(['data-updated'])
 
 interface FormData {
   name: string
   age: string
-  sex: undefined
+  sex: string
   address: string
 }
 const form = reactive<FormData>({
   name: '',
   age: '',
-  sex: undefined,
+  sex: '',
   address: ''
 })
 const options = ref<SelectProps['options']>([
@@ -112,7 +112,7 @@ const rules: Record<string, Rule[]> = {
       trigger: 'change'
     }
   ],
-  address: [
+  defaultArea: [
     {
       required: true,
       message: '请填写您的地址',
@@ -129,26 +129,35 @@ const showDrawer = () => {
 const onClose = () => {
   open.value = false
 }
-const token = localStorage.getItem('token')
-const id = localStorage.getItem('AcountID') as string
 
 // 获取数据
-const amendMessage = () => {}
-// 修改数据
-const sendDataToBackend = async (
-  name: string,
-  age: string,
-  sex: undefined,
-  address: string,
-  id: string
-) => {
+const amendMessage = async () => {
+  const res = await ZHQgetPersonal()
+  const resData = res.data[0]
+  form.name = resData.name
+  form.sex = resData.sex
+  form.age = resData.age
+  form.address = resData.contion
+  emit('data-updated', resData)
+}
+const sendDataToBackend = async () => {
+  const formdata = new FormData()
+  formdata.append('name', form.name)
+  formdata.append('age', form.age)
+  formdata.append('sex', form.sex)
+  formdata.append('contion', form.address)
+  // const requestData = {
+  //   name: form.name,
+  //   age: form.age,
+  //   sex: form.sex,
+  //   contion: form.address
+  // }
   await formRef.value.validate()
-  // 清空表单数据
-  form.name = ''
-  form.age = ''
-  form.sex = undefined // 或者你可以设置一个默认值如''，具体依据你的需求
-  form.address = ''
+  const res = await Editperson(formdata)
+  console.log(res)
+  message.success('修改成功')
   onClose()
+  amendMessage()
 }
 </script>
 <style scoped>

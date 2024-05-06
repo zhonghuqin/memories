@@ -36,7 +36,6 @@
     </a-float-button>
     <DrawerPage v-model:open="openStore.isOpen"></DrawerPage>
     <!-- </a-layout-sider> -->
-
   </a-layout>
 </template>
 
@@ -71,24 +70,12 @@ const siderStyle: CSSProperties = {
     'rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset',
   background: 'rgba(255, 195, 100, 1)'
 }
-const rightStyle: CSSProperties = {
-  position: 'relative',
-  textAlign: 'center',
-  lineHeight: '120px',
-  color: '#fff',
-  boxShadow:
-    'rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset',
-  background: '#eee'
-}
 const footerStyle: CSSProperties = {
   textAlign: 'center',
   color: '#fff',
   backgroundColor: '#ededed',
   height: '200px'
 }
-//右侧抽屉
-// const isOpen = ref(false)
-// const showDrawer = () => openStore.controlOpen
 const logout = () => {
   router.push('/LoginPage')
 }

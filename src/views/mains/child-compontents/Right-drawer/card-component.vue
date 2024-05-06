@@ -81,7 +81,7 @@
     cancel-text="取消"
     style="text-align: center"
   >
-    <p contenteditable @input="updateText">
+    <p contenteditable>
       {{ editableText }}
     </p>
   </a-modal>
@@ -99,7 +99,7 @@
   </a-modal>
 </template>
 <script setup lang="ts">
-import { ref, defineEmits } from 'vue'
+import { ref } from 'vue'
 const props = defineProps({
   backgroundColor: {
     type: String,

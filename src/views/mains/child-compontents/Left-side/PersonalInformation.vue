@@ -24,10 +24,8 @@
 <script setup lang="ts">
 import EditPersonal from './EditPersonal.vue'
 import { ref } from 'vue'
+import { ZHQgetPersonal } from '@/service/pages/mains/child-compontents/Left-side/personallnformation'
 // 使用 ref 声明响应式数据
-const colorList = ['#f56a00', '#7265e6', '#ffbf00', '#00a2ae']
-const userName = ref('')
-const color = ref(colorList[0])
 const name = ref('这是一个人名')
 const sex = ref('女')
 const age = ref('18岁')
@@ -38,12 +36,18 @@ const handleDataUpdated = (data: any) => {
   name.value = data.name
   sex.value = data.sex
   age.value = data.age
-  address.value = data.address
+  address.value = data.contion
 }
-const token = localStorage.getItem('token')
-const id = localStorage.getItem('AcountID') as string
 // 获取数据
-const amendMessage = () => {}
+const amendMessage = async () => {
+  const res = await ZHQgetPersonal()
+  const resData = res.data[0]
+  console.log(resData)
+  name.value = resData.name
+  sex.value = resData.sex
+  age.value = resData.age
+  address.value = resData.contion
+}
 amendMessage()
 </script>
 

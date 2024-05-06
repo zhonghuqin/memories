@@ -1,12 +1,23 @@
 import lsjRequest from '@/service/index'
 
-export function Editperson(formState: {
-  name: string
-  age: string
-  adress: string
-}) {
+//获取个人信息
+export function ZHQgetPersonal() {
+  const token = localStorage.getItem('LOGIN_TOKEN')
+  return lsjRequest.get({
+    url: '/user/selectInformation',
+    headers: {
+      Authorization: token // 将请求头内容传递给后端
+    }
+  })
+}
+//修改个人信息
+export function Editperson(formState: FormData) {
+  const token = localStorage.getItem('LOGIN_TOKEN')
   return lsjRequest.post({
-    url: '',
+    url: '/user/updateInformation',
+    headers: {
+      Authorization: token // 将请求头内容传递给后端
+    },
     data: formState
   })
 }
