@@ -7,10 +7,11 @@
       :style="{
         backgroundColor: button.styles.bgplay,
         borderRadius: '8px',
-        color: '#fff'
+        color: '#fff',
+        fontSize: '20px',
+        height: '50px'
       }"
-      :icon="button.icons.finish"
-    >
+      >结束话题
     </Button>
   </div>
 </template>

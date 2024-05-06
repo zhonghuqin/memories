@@ -23,7 +23,7 @@ generateTime()
 .time {
   width: 100%;
   text-align: center;
-  font-size: 16px;
+  font-size: 20px;
   color: #56684f;
 }
 </style>
