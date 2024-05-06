@@ -1,3 +1,7 @@
+import { createPinia } from 'pinia'
+const pinia = createPinia()
+
+export default pinia
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 
@@ -10,3 +14,4 @@ export const useOpenStore = defineStore('isOpen', () => {
   }
   return { isOpen, controlOpen }
 })
+
